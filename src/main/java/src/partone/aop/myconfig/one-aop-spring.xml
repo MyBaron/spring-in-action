@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--    构造器注入-->
+    <bean id="king" class="src.partone.aop.King">
+        <!--  注入task对象      -->
+        <constructor-arg ref="task"  />
+    </bean>
+
+    <bean id="task" class="src.partone.aop.KillDragon"/>
+    <bean id="singer" class="src.partone.aop.Singer"/>
+
+    <aop:config>
+        <aop:aspect ref="singer">
+            <!-- 切面-->
+            <aop:pointcut id="killDragon" expression="execution(* *.execute(..))"/>
+            <!--声明前置通知-->
+            <aop:before method="singBefore" pointcut-ref="killDragon"/>
+
+            <!--声明后置通知-->
+            <aop:after method="singAfer" pointcut-ref="killDragon"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

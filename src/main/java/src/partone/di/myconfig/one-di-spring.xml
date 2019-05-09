@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans   xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <!--    构造器注入-->
+    <bean id="king" class="src.partone.di.King">
+        <!--  注入task对象      -->
+        <constructor-arg ref="task"  />
+    </bean>
+    <bean id="task" class="src.partone.di.KillDragon"></bean>
+</beans>
