@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("controller")  //启动扫描
 public class WebConfig  extends WebMvcConfigurerAdapter {
 
-
     //配置试图解析器
     @Bean
     public ViewResolver viewResolver() {
